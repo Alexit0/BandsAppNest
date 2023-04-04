@@ -11,7 +11,6 @@ import {
 import { BandsService } from './bands.service';
 import { CreateBandDto, UpdateBandDto } from '../dtos/band.dto';
 import { Body } from '@nestjs/common/decorators/http/route-params.decorator';
-import { Bands } from '../entities/bands.entity';
 
 @Controller('bands')
 export class BandsController {

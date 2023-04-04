@@ -8,19 +8,19 @@ export class Band_mus_isnt {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Bands, (band) => band.id, {
+  @ManyToOne(() => Bands, (band) => band.lineup, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   band: Bands;
 
-  @ManyToOne(() => Musicians, (musician) => musician.id, {
+  @ManyToOne(() => Musicians, (musician) => musician.lineup, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   musician: Musicians;
 
-  @ManyToOne(() => Instruments, (instrument) => instrument.id, {
+  @ManyToOne(() => Instruments, (instrument) => instrument.lineup, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })

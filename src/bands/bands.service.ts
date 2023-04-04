@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, UpdateResult, DeleteResult } from 'typeorm';
+  import { InjectRepository } from '@nestjs/typeorm';
+  import { Repository, UpdateResult, DeleteResult } from 'typeorm';
 import { Bands } from '../entities/bands.entity';
 
 interface Band {
@@ -57,4 +57,6 @@ export class BandsService {
   deleteBand(id: number): Promise<DeleteResult> {
     return this.bandsRepository.delete(id);
   }
+
+  
 }

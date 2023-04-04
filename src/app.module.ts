@@ -8,6 +8,7 @@ import { Musicians } from './entities/musicians.entity';
 import { Instruments } from './entities/instruments.entity';
 import { MusiciansModule } from './musicians/musicians.module';
 import { Band_mus_isnt } from './entities/band_musician_instrument.entity';
+import { LineupModule } from './lineup/lineup.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { Band_mus_isnt } from './entities/band_musician_instrument.entity';
       entities: [Bands, Musicians, Instruments, Band_mus_isnt],
       synchronize: true,
     }),
+    LineupModule,
   ],
   controllers: [AppController],
   providers: [AppService],

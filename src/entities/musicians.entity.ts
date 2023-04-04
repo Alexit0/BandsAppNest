@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Band_mus_isnt } from './band_musician_instrument.entity';
 
 @Entity()
 export class Musicians {
@@ -19,4 +20,7 @@ export class Musicians {
 
   @Column()
   updated_at: Date;
+
+  @OneToMany(() => Band_mus_isnt, (lineup) => lineup.musician)
+  lineup: Band_mus_isnt[];
 }
