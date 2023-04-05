@@ -1,5 +1,6 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { LineupService } from './lineup.service';
+import { LineupResponseDto } from 'src/dtos/lineup.dto';
 
 @Controller('lineup')
 export class LineupController {

@@ -14,13 +14,13 @@ import { LineupModule } from './lineup/lineup.module';
   imports: [
     BandsModule,
     MusiciansModule,
+    LineupModule,
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite3',
       entities: [Bands, Musicians, Instruments, Band_mus_isnt],
       synchronize: true,
     }),
-    LineupModule,
   ],
   controllers: [AppController],
   providers: [AppService],
