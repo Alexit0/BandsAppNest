@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
 import { Bands } from './bands.entity';
 import { Musicians } from './musicians.entity';
 import { Instruments } from './instruments.entity';
@@ -7,6 +7,15 @@ import { Instruments } from './instruments.entity';
 export class Band_mus_isnt {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  bandId: number
+
+  @Column()
+  musicianId: number
+
+  @Column()
+  instrumentId: number
 
   @ManyToOne(() => Bands, (band) => band.lineup, {
     onDelete: 'CASCADE',

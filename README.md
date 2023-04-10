@@ -5,10 +5,15 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-
 ## Description
 
-BandsApp server
+<h1>BandsApp (back-end)</h1>
+
+Bandsapp is an application allowing you to manage a database of musicians and bands they play their duties in. CRUD operations are available, more functionality is coming soon.
+
+Using node v18.15.0, sqlite 3.41.1
+
+
 
 ## Installation
 
@@ -28,17 +33,3 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-

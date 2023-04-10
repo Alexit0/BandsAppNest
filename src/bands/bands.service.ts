@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-  import { InjectRepository } from '@nestjs/typeorm';
-  import { Repository, UpdateResult, DeleteResult } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository, UpdateResult, DeleteResult } from 'typeorm';
 import { Bands } from '../entities/bands.entity';
 
 interface Band {
@@ -21,8 +21,8 @@ export class BandsService {
     @InjectRepository(Bands) private bandsRepository: Repository<Bands>,
   ) {}
 
-  getAllBands(): Promise<Bands[]>  {
-    const results = this.bandsRepository.find()
+  getAllBands(): Promise<Bands[]> {
+    const results = this.bandsRepository.find();
     return results;
   }
 
@@ -38,7 +38,12 @@ export class BandsService {
       created_at: new Date(),
       updated_at: new Date(),
     };
-    return this.bandsRepository.save(newBand);
+    try {
+      this.bandsRepository.save(newBand);
+    } catch (error) {
+      throw new Error();
+    }
+    return
   }
 
   editBand(
@@ -57,6 +62,4 @@ export class BandsService {
   deleteBand(id: number): Promise<DeleteResult> {
     return this.bandsRepository.delete(id);
   }
-
-  
 }

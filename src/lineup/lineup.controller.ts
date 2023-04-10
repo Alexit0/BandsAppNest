@@ -1,6 +1,13 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Patch,
+  Param,
+  ParseIntPipe,
+  Body,
+} from '@nestjs/common';
 import { LineupService } from './lineup.service';
-import { LineupResponseDto } from 'src/dtos/lineup.dto';
+import { LineupUpdateDto } from 'src/dtos/lineup.dto';
 
 @Controller('lineup')
 export class LineupController {
@@ -9,5 +16,14 @@ export class LineupController {
   @Get(':id')
   async getLineup(@Param('id', ParseIntPipe) id: number) {
     return this.lineupService.getLineup(id);
+  }
+
+  @Patch(':id')
+  async updateLineup(
+    @Param('id', ParseIntPipe) id: number,
+    @Body()
+    body: LineupUpdateDto[],
+  ) {
+    return await this.lineupService.editLineup(id, body);
   }
 }

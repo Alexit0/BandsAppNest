@@ -28,6 +28,7 @@ export class BandsController {
 
   @Post()
   addBand(@Body() body: CreateBandDto) {
+    console.log(body)
     return this.bandsService.addBand(body);
   }
 
