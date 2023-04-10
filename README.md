@@ -7,7 +7,9 @@
 
 ## Description
 
-<h1>BandsApp (back-end)</h1>
+<h1>BandsApp (back-end )</h1>
+
+<h3> (Built with NestJS) </h3>
 
 Bandsapp is an application allowing you to manage a database of musicians and bands they play their duties in. CRUD operations are available, more functionality is coming soon.
 
