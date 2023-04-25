@@ -7,5 +7,9 @@ export class LineupUpdateDto {
   @IsNumber()
   musicianId: number;
   @IsNumber()
-  instrumentId: number;
+  instrumentId: number
+  @IsNumber()
+  startsPlaying: number;
+  @IsNumber()
+  quitBand: number;
 }

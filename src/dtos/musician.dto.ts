@@ -24,6 +24,6 @@ export class UpdateMusicianDto {
 
   @IsOptional()
   @IsNumber()
-  yob: number;
+  yob: number
 }
 

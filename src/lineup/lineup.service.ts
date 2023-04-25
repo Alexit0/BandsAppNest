@@ -2,11 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, DataSource } from 'typeorm';
 import { Band_mus_isnt } from 'src/entities/band_musician_instrument.entity';
+import { LargeNumberLike } from 'crypto';
 
 interface LineupUpdate {
   bandId: number;
   musicianId: number;
   instrumentId: number;
+  startsPlaying: number;
+  quitBand: number;
 }
 [];
 
@@ -18,20 +21,26 @@ export class LineupService {
     private dataSource: DataSource,
   ) {}
 
-  getLineup(id: number): Promise<Band_mus_isnt[]> {
-    return this.lineupRepository
+  async getLineup(id: number): Promise<Band_mus_isnt[]> {
+    const results = await this.lineupRepository
       .createQueryBuilder('lineup')
+      .select('band.year_end', 'bands_end')
+      .addSelect('lineup.year_to', 'quit_band')
+      .addSelect('lineup.year_from', 'started_playing')
       .leftJoin('lineup.band', 'band')
       .leftJoinAndSelect('lineup.musician', 'musician')
       .leftJoinAndSelect('lineup.instrument', 'instrument')
       .where('lineup.bandId = :bandId', { bandId: id })
-      .getMany();
+      .getRawMany();
+
+    return results;
   }
 
   async editLineup(id: number, body: LineupUpdate[]) {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     console.log('connected');
+    console.log('BODY', body);
     await queryRunner.manager.query('PRAGMA foreign_keys=off');
     await queryRunner.startTransaction();
 
@@ -41,7 +50,8 @@ export class LineupService {
 
       body.forEach((element) =>
         queryRunner.manager.query(
-          `INSERT INTO lineup (bandId, musicianId, instrumentId) VALUES (${+element.bandId}, ${+element.musicianId}, ${+element.instrumentId})`,
+          `INSERT INTO lineup (bandId, musicianId, instrumentId, year_from, year_to) VALUES (
+            ${+element.bandId}, ${+element.musicianId}, ${+element.instrumentId}, ${+element.startsPlaying}, ${+element.quitBand})`,
         ),
       );
 

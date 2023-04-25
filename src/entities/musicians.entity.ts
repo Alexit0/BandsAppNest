@@ -12,7 +12,7 @@ export class Musicians {
   @Column()
   last_name: string;
 
-  @Column()
+  @Column({nullable: true})
   yob: number;
 
   @Column()

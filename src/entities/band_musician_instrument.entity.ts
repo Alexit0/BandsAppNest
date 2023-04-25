@@ -9,13 +9,19 @@ export class Band_mus_isnt {
   id: number;
 
   @Column()
-  bandId: number
+  bandId: number;
 
   @Column()
-  musicianId: number
+  musicianId: number;
 
   @Column()
-  instrumentId: number
+  instrumentId: number;
+
+  @Column({ nullable: true })
+  year_from: number;
+
+  @Column({ nullable: true })
+  year_to: number;
 
   @ManyToOne(() => Bands, (band) => band.lineup, {
     onDelete: 'CASCADE',
