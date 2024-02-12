@@ -32,7 +32,10 @@ $ npm install
 2. Create .env file in the main folder containing the variable storing your connection string:
 
 ```
-ATLAS_CONNECT = 'your connection string'
+CLIENT_ID='your client id'
+```
+```
+CLIENT_SECRET='your client secret'
 ```
 
 3. Run the app:
