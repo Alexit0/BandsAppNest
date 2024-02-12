@@ -29,7 +29,7 @@ $ npm install
 
 1. Follow all the steps on [Spotify for Developers Website](https://developer.spotify.com/documentation/web-api/tutorials/getting-started) and obtain your token. This is in order to load band pictures from Spotify database.
 
-2. Create .env file in the main folder containing the variable storing your connection string:
+2. Create .env file in the main folder containing variables storing your connection string:
 
 ```
 CLIENT_ID='your client id'
